@@ -46,4 +46,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
+  test "Should show three buttons" do
+    get products_url
+    assert_select 'ul li a', 'Show'
+    assert_select 'ul li a', 'Edit'
+    assert_select 'ul li a', 'Destroy'
+  end
 end
