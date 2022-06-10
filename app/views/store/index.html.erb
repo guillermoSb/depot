@@ -2,9 +2,13 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <h1 class="font-bold text-xl mb-6 pb-2 border-b-2">
+  <h1 class="font-bold text-xl mb-3 pb-2">
     Your Pragmatic Catalog
+
   </h1>
+  <% if @counter > 5 %>
+    <p class="mb-6 pb-2 border-b-2">You've seen this page <%= pluralize(@counter, 'time') %></p>
+  <% end %>
   <ul>
     <% cache @products do %>
       <% @products.each do |product| %>
