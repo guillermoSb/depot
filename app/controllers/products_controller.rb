@@ -70,6 +70,6 @@ class ProductsController < ApplicationController
     end
 
     def invalid_product
-      redirect_to products_url, notice: 'Invalid product.'
+      redirect_to products_url, notice: 'Invalid Product.'
     end
 end

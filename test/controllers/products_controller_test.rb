@@ -60,4 +60,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'ul li a', 'Edit'
     assert_select 'ul li a', 'Destroy'
   end
+
+  test "Should show error when invalid product is sent" do
+    get product_url(5252)
+    follow_redirect!  # Follow the user redirect
+    assert_select 'p', 'Invalid Product.'
+  end
 end
