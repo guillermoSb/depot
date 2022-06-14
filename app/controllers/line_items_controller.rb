@@ -28,7 +28,8 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(product) # Add the product to the cart
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to cart_url(@line_item.cart) }
+        format.turbo_stream
+        format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,7 +67,7 @@ class LineItemsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to cart_url(@cart), notice: "Your cart was successfully updated." }
+        format.html { redirect_to store_index_url, notice: "Your cart was successfully updated." }
         format.json { head :no_content }
       end
     end
